@@ -1,35 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html" encoding="UTF-8">
 
-<h:head>
-	<title>Hello</title>
-</h:head>
+	<h:head>
+		<title>Hello</title>
+	</h:head>
 
-<h:body>
-	<h:form id="indexForm" prependId="false">
+	<h:body>
+		<h:form id="indexForm" prependId="false">
+			<p:messages id="msgs" />
+			<p:panel header="indexPanel">
+				<h:panelGrid id="test" columns="2" cellpadding="4">
+					<h:outputText value="First Name: " />
+					<p:inputText id="firstName" value="#{index.firstName}">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+					<h:outputText value="Last Name: " />
+					<p:inputText id="lastName" value="#{index.lastName}">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+				</h:panelGrid>
+				<p:commandButton id="greetingBtn"  value="Submit" update="test greeting"
+						oncomplete="PF('greetingDialog').show()" />
+			</p:panel>
 
-		<p:panel header="indexPanel">
-			<h:panelGrid columns="2" cellpadding="4">
-				<h:outputText value="First Name: " />
-				<p:inputText value="#{index.firstName}" />
-				<h:outputText value="Last Name: " />
-				<p:inputText value="#{index.lastName}" />
+			<p:dialog id="greetingDlg" header="Greeting"
+				widgetVar="greetingDialog" modal="true" resizable="false">
+				<h:panelGrid id="greeting" columns="1" cellpadding="4">
+					<h:outputText value="#{index.showGreeting()}" />
+				</h:panelGrid>
+			</p:dialog>
 
-				<p:commandButton value="Submit" update="greeting"
-					oncomplete="PF('greetingDialog').show()" />
-			</h:panelGrid>
-		</p:panel>
-
-		<p:dialog header="Greeting" widgetVar="greetingDialog" modal="true"
-			resizable="false">
-			<h:panelGrid id="greeting" columns="1" cellpadding="4">
-				<h:outputText value="#{index.showGreeting()}" />
-			</h:panelGrid>
-		</p:dialog>
-
-	</h:form>
-</h:body>
+		</h:form>
+	</h:body>
+</f:view>
 </html>

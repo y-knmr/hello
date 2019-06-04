@@ -10,61 +10,18 @@
 	<url>http://maven.apache.org</url>
 
 	<!-- TODO versionの確認 -->
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-		<servlet.version>3.1.0</servlet.version>
-		<jsf.version>2.2.9</jsf.version>
-		<primefaces.version>7.0</primefaces.version>
-		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-		<jetty.version>[9.4.17.v20190418,)</jetty.version>
-	</properties>
 	<dependencies>
-		<!-- JSF -->
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>${jsf.version}</version>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>8.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<version>${jsf.version}</version>
-			<scope>provided</scope>
-		</dependency>
-
-
-		<dependency>
-			<groupId>org.jboss.weld.servlet</groupId>
-			<artifactId>weld-servlet-core</artifactId>
-			<version>3.1.1.Final</version>
-			<scope>provided</scope>
-		</dependency>
-		<!--<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.enterprise</groupId>
-			<artifactId>cdi-api</artifactId>
-			<version>1.2</version>
-			<scope>provided</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.el</groupId>
-					<artifactId>javax.el-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>  -->
-
 		<!-- PrimeFaces -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>${primefaces.version}</version>
+			<version>7.0</version>
 		</dependency>
 
 		<!-- selenide関連 -->
@@ -91,49 +48,8 @@
 			<artifactId>selenide</artifactId>
 			<version>5.2.3</version>
 		</dependency>
-
-		<!-- Jetty -->
-		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-server</artifactId>
-			<version>${jetty.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-webapp</artifactId>
-			<version>${jetty.version}</version>
-		</dependency>
-
-
 	</dependencies>
 	<build>
 		<finalName>hello</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>${jetty.version}</version>
-				<configuration>
-					<!--  <httpConnector>
-						<port>9090</port>
-					</httpConnector>-->
-					<stopPort>1353</stopPort>
-                    <stopKey>quit</stopKey>
-                    <contextXml>src/main/webapp/WEB-INF/jetty-web.xml</contextXml>
-					<webApp>
-						<contextPath>/hello</contextPath>
-					</webApp>
-				</configuration>
-			</plugin>
-		</plugins>
 	</build>
 </project>
