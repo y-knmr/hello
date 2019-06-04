@@ -32,22 +32,33 @@
 			<artifactId>jsf-impl</artifactId>
 			<version>${jsf.version}</version>
 			<scope>provided</scope>
-		</dependency>  
+		</dependency>
 
-		<!--<dependency>
-			<groupId>javax.faces</groupId>
-			<artifactId>javax.faces-api</artifactId>
-			<version>2.3</version>
-			<scope>provided</scope>
-		</dependency>-->
 
-		<!-- CDI -->
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
 			<artifactId>weld-servlet-core</artifactId>
 			<version>3.1.1.Final</version>
 			<scope>provided</scope>
 		</dependency>
+		<!--<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.el</groupId>
+					<artifactId>javax.el-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>  -->
 
 		<!-- PrimeFaces -->
 		<dependency>
@@ -112,9 +123,12 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.version}</version>
 				<configuration>
-					<httpConnector>
+					<!--  <httpConnector>
 						<port>9090</port>
-					</httpConnector>
+					</httpConnector>-->
+					<stopPort>1353</stopPort>
+                    <stopKey>quit</stopKey>
+                    <contextXml>src/main/webapp/WEB-INF/jetty-web.xml</contextXml>
 					<webApp>
 						<contextPath>/hello</contextPath>
 					</webApp>
