@@ -15,7 +15,7 @@
 		<java.version>1.8</java.version>
 		<servlet.version>3.1.0</servlet.version>
 		<jsf.version>2.2.9</jsf.version>
-		<primefaces.version>7.0</primefaces.version>
+		<primefaces.version>8.0</primefaces.version>
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<jetty.version>[9.4.17.v20190418,)</jetty.version>
 	</properties>
